@@ -27,8 +27,6 @@ public class SimpleDBOperations {
 
 
     public static void main(String[] args) {
-
-        Connection conn;
         ResultSet result;
 
         try{
@@ -38,8 +36,7 @@ public class SimpleDBOperations {
             return;
         }
 
-        try{
-            conn = DriverManager.getConnection("jdbc:h2:~/test", user, pswd);
+        try(Connection conn = DriverManager.getConnection("jdbc:h2:~/test", user, pswd)){
             Statement st = conn.createStatement();
             st.execute(tableCreationQuery);
             entriesSelection = conn.prepareStatement(selectQuery);
