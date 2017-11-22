@@ -65,6 +65,14 @@ public class SimpleDBOperations {
 
             tableDropping.executeUpdate();
 
+            result.close();
+            st.close();
+            entriesSelection.close();
+            tableUpdating.close();
+            entrySelection.close();
+            entryInsertion.close();
+            tableDropping.close();
+
         }catch(SQLException e){
             e.printStackTrace();
             return;
